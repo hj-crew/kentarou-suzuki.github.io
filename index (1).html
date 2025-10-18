@@ -1,0 +1,207 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>あなたの名前｜電子名刺</title>
+  <meta name="description" content="水色テーマの洗練された電子名刺。清潔感・信頼感・読みやすさを両立した1ページ。" />
+  <meta name="theme-color" content="#76ADD1" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      /* —— Color scale（スクショの雰囲気に寄せた水色ネイビー系） —— */
+      --bg:#F6FAFD;            /* 背景：ごく淡い水色 */
+      --card:#FFFFFF;          /* カード白 */
+      --ink:#1F3D59;           /* 本文：深い青みグレー */
+      --sub:#6B7C8C;           /* サブ：クールグレー */
+      --line:#E4EEF5;          /* 罫線：薄い水色 */
+      --brand:#76ADD1;         /* ブランドバー：やや彩度のある水色 */
+      --accent:#5FAFD4;        /* ボタン等：少し濃い水色 */
+      --accent-2:#BFE4F0;      /* 淡い水色 */
+      --navy:#234B71;          /* 見出しの深いネイビー */
+      --glass:rgba(255,255,255,.65);
+      --radius:18px;
+      --shadow:0 12px 28px rgba(35,75,113,.08), 0 2px 10px rgba(35,75,113,.05);
+    }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#F8FCFF 0%, #F6FAFD 60%, #F4F9FD 100%);color:var(--ink);font-family:"Noto Sans JP",system-ui,sans-serif;letter-spacing:.01em}
+    a{color:inherit;text-decoration:none}
+
+    /* —— Top Nav —— */
+    .nav-wrap{position:sticky;top:0;z-index:50;backdrop-filter:saturate(120%) blur(10px); background:linear-gradient(180deg, rgba(118,173,209,.92), rgba(118,173,209,.86)); border-bottom:1px solid rgba(255,255,255,.35)}
+    .nav{max-width:980px;margin:0 auto;padding:14px 20px;display:flex;align-items:center;justify-content:space-between;color:#0f2a41}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo{width:40px;height:40px;border-radius:50%;background:radial-gradient(80% 80% at 30% 30%, #ffffff 0%, #CFE8F5 35%, #76ADD1 70%, #579FC8 100%);box-shadow:0 4px 14px rgba(87,159,200,.35)}
+    .brand h1{font-family:"Playfair Display",serif;margin:0;font-size:clamp(20px,2.6vw,26px);font-weight:700;letter-spacing:.02em}
+    .menu{display:flex;gap:18px;align-items:center}
+    .menu a{font-size:14px;color:#0f2a41;opacity:.9}
+    .menu a:hover{opacity:1;border-bottom:1px solid rgba(15,42,65,.35)}
+
+    .wrap{max-width:980px;margin:0 auto;padding:28px 20px 72px}
+
+    /* —— Hero —— */
+    .hero{display:grid;grid-template-columns:180px 1fr;gap:24px;margin-top:18px}
+    .portrait{position:relative}
+    .avatar{width:180px;height:180px;border-radius:18px;background:#eaf7fb url('') center/cover no-repeat;border:1px solid var(--line);box-shadow:var(--shadow)}
+    .chip{position:absolute;left:-10px;bottom:-10px;padding:6px 10px;border-radius:999px;background:var(--glass);border:1px solid rgba(118,173,209,.35);backdrop-filter:blur(6px);font-size:12px;color:#0f2a41}
+
+    .hero h2{font-family:"Playfair Display",serif;font-size:clamp(28px,4.2vw,40px);line-height:1.15;color:var(--navy);margin:.1em 0 .3em}
+    .title{color:var(--sub);font-weight:500}
+    .tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
+    .tag{padding:6px 12px;border-radius:999px;background:linear-gradient(180deg,#F6FBFE,#E8F6FB);border:1px solid var(--line);font-size:12px;color:#0f2a41}
+
+    .cta{display:flex;flex-wrap:wrap;gap:12px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:12px;border:1px solid var(--line);background:linear-gradient(180deg,#ffffff,#F8FDFF);font-weight:600;box-shadow:0 2px 8px rgba(35,75,113,.06)}
+    .btn.primary{background:linear-gradient(180deg,var(--accent),#4fa5cd);color:#fff;border-color:transparent;box-shadow:0 10px 24px rgba(95,175,212,.25)}
+    .btn:hover{transform:translateY(-1px)}
+
+    /* —— Cards —— */
+    .grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:22px}
+    .card{position:relative;background:var(--glass);border:1px solid rgba(118,173,209,.28);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow);backdrop-filter:blur(8px)}
+    .card:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(135deg, rgba(118,173,209,.55), rgba(191,228,240,.25), rgba(118,173,209,.35));-webkit-mask:linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude}
+    .card h3{margin:0 0 12px;color:var(--navy);font-size:16px;letter-spacing:.05em}
+    .list{display:grid;gap:10px}
+    .item{display:flex;gap:10px}
+    .dot{width:8px;height:8px;border-radius:50%;background:var(--accent);margin-top:.6em}
+    .item p{margin:0;color:#2a4a68;line-height:1.85}
+
+    /* —— Links —— */
+    .links{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    .link{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:linear-gradient(#fff,#F7FCFF)}
+    .link:hover{background:linear-gradient(#F2FAFF,#EAF6FD);box-shadow:0 6px 16px rgba(35,75,113,.08)}
+    .link .left{display:flex;align-items:center;gap:10px}
+    .link .icon{width:22px;height:22px;border-radius:6px;display:grid;place-items:center;background:var(--accent-2);border:1px solid #d3e9f5}
+    .link .icon svg{width:14px;height:14px;display:block}
+    .link span{font-weight:700;color:var(--ink)}
+    .link small{color:var(--sub)}
+
+    /* —— Contact —— */
+    .qr{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center}
+    .qr{display:grid;grid-template-columns:130px 1fr;gap:16px;align-items:center}
+    .qr .box{width:130px;height:130px;border-radius:14px;border:1px dashed var(--line);background:#F3FBFF;display:grid;place-items:center;color:var(--sub);font-size:12px}
+
+    /* —— Footer —— */
+    footer{margin-top:30px;color:var(--sub);font-size:12px;display:flex;justify-content:space-between;flex-wrap:wrap}
+
+    @media (max-width:760px){
+      .hero{grid-template-columns:1fr}
+      .avatar{width:100%;height:220px}
+      .grid{grid-template-columns:1fr}
+      .links{grid-template-columns:1fr}
+      .qr{grid-template-columns:1fr}
+      .nav{padding:12px 16px}
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Nav -->
+  <div class="nav-wrap">
+    <div class="nav">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <h1>グラーティア税理士法人</h1>
+      </div>
+      <nav class="menu">
+        <a href="#about">ABOUT</a>
+        <a href="#links">LINKS</a>
+        <a href="#contact">CONTACT</a>
+      </nav>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- Hero -->
+    <section class="hero" id="about">
+      <div class="portrait">
+        <div class="avatar" aria-label="プロフィール画像"></div>
+        <span class="chip">電子名刺</span>
+      </div>
+      <div>
+        <p class="title">役職 / 税務・会計 / 自動化支援</p>
+        <h2>鈴木　健太郎（すずき　けんたろう）</h2>
+        <div class="tags">
+          <span class="tag">税理士法人勤務</span>
+          <span class="tag">経理効率化</span>
+          <span class="tag">Python & React</span>
+        </div>
+        <div class="cta">
+          <a class="btn primary" href="mailto:you@example.com">メールで連絡</a>
+          <a class="btn" href="tel:+81-80-7253-7514">080‑7253‑7514</a>
+          <a class="btn" href="#contact">vCard / QR</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Cards grid -->
+    <div class="grid">
+      <section class="card">
+        <h3>プロフィール</h3>
+        <div class="list">
+          <div class="item"><span class="dot"></span><p>税務会計とITのハイブリッドを目指しています。</br>バックオフィスを“8割自動・2割確認”へ。</p></div>
+          <div class="item"><span class="dot"></span><p>取得資格：日商簿記一級・税理士試験科目：簿記論</p></div>
+          <div class="item"><span class="dot"></span><p>実装：React、Python、Excelマクロ、n8n、RPA（Power Automate）。</p></div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h3>サービス</h3>
+        <div class="list">
+          <div class="item"><span class="dot"></span><p>OCR→Excel→会計／申告までのパイプライン構築。</p></div>
+          <div class="item"><span class="dot"></span><p>税務Q&A／報告書テンプレ整備／社内の標準化ドキュメント作成。</p></div>
+        </div>
+      </section>
+
+      <section class="card" id="links">
+        <h3>リンク</h3>
+        <div class="links">
+          <!-- LINE 友だち追加（統一デザイン） -->
+          <a class="link" href="https://line.me/ti/p/k57MwTtMx_" target="_blank" rel="noopener" aria-label="LINEで友だち追加">
+            <div class="left">
+              <div class="icon" aria-hidden="true">
+                <!-- LINE風 吹き出しアイコン（SVG）-->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12 3C7.03 3 3 6.49 3 10.79c0 2.42 1.3 4.57 3.35 6.01L5.7 20.7a.6.6 0 0 0 .84.74l3.77-1.76c.55.08 1.12.12 1.69.12 4.97 0 9-3.49 9-7.79S16.97 3 12 3z" stroke="#3C86B6" stroke-width="1.6"/>
+                  <path d="M7.2 11.5h2.2m1.4 0h2.2m1.4 0h2.2" stroke="#3C86B6" stroke-width="1.6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <span>LINE</span>
+            </div>
+            <small>友だち追加</small>
+          </a>
+
+          <!-- 既存リンク -->
+          <a class="link" href="#" target="_blank" rel="noopener"><div class="left"><div class="icon" aria-hidden="true"></div><span>GitHub</span></div><small>@yourid</small></a>
+          <a class="link" href="#" target="_blank" rel="noopener"><div class="left"><div class="icon" aria-hidden="true"></div><span>LinkedIn</span></div><small>経歴</small></a>
+          <a class="link" href="#" target="_blank" rel="noopener"><div class="left"><div class="icon" aria-hidden="true"></div><span>X</span></div><small>@handle</small></a>
+          <a class="link" href="#" target="_blank" rel="noopener"><div class="left"><div class="icon" aria-hidden="true"></div><span>Blog</span></div><small>記事一覧</small></a>
+        </div>
+      </section>
+
+      <section class="card" id="contact">
+        <h3>名古屋オフィス</h3>
+        <div class="qr">
+          <div class="box" id="qrBox">QRコード</div>
+          <p>〒460-0008<br>名古屋市中区栄2丁目6番1号</a><br>電　話：052‑325‑8113<br>ＦＡＸ：052‑325‑8114<br>Ｈ　Ｐ：<a href="https://gratia.pro">https://gratia.pro</p>
+        </div>
+      </section>
+    </div>
+
+    <footer>
+      <div>© <span id="y"></span> GRATIA.pro</div>
+    </footer>
+  </div>
+
+  <script>
+    // 年号
+    document.getElementById('y').textContent=new Date().getFullYear();
+    // QRプレースホルダ
+    const box=document.getElementById('qrBox');
+    const canvas=document.createElement('canvas');canvas.width=130;canvas.height=130;const ctx=canvas.getContext('2d');
+    ctx.fillStyle='#E8F6FD';ctx.fillRect(0,0,130,130);ctx.fillStyle='#234B71';
+    for(let y=0;y<13;y++){for(let x=0;x<13;x++){if((x*y + x + y)%7===0){ctx.fillRect(x*10+1,y*10+1,8,8)}}}
+    box.innerHTML='';box.appendChild(canvas);
+  </script>
+</body>
+</html>
