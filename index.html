@@ -77,16 +77,43 @@ footer{margin-top:30px;color:var(--sub);font-size:12px;display:flex;justify-cont
 .btn.line{font-size:16px}
 .cta-split .btn{font-size:15px}
 }
+    :root{
+  --header-h: 64px; /* ヘッダー高さ（必要なら調整） */
+}
+
+/* 固定ヘッダー化 */
+.nav-wrap{
+  position: fixed;        /* ← sticky から fixed に */
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  padding-top: env(safe-area-inset-top, 0px); /* iPhoneノッチ安全域 */
+  backdrop-filter: saturate(120%) blur(10px);
+  background: linear-gradient(180deg, rgba(118,173,209,.92), rgba(118,173,209,.86));
+  border-bottom: 1px solid rgba(255,255,255,.35);
+}
+
+/* 本文がヘッダーの下に隠れないように上マージンを確保 */
+body{
+  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
+}
+
+/* 中の高さ合わせ（任意。見た目に合わせて） */
+.nav{
+  min-height: var(--header-h);
+}
 </style>
+  
 </head>
 <body>
  <!-- Top Nav -->
   <div class="nav-wrap"> 
     <div class="nav"> 
       <div class="brand"> 
-        <div class="logo.gra2.png" aria-hidden="true"></div> 
+        <div class="logo" aria-hidden="true"></div> 
         <h1>グラーティア税理士法人</h1> 
-        </div> 
+        </div>
+      </div>
+</div>
      
 <div class="wrap">
 <!-- Hero --> 
