@@ -9,7 +9,10 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <style>
+ <style>
+.wrap{max-width:980px;margin:0 auto;padding:28px 20px 72px}
+
+
 /* —— Hero —— */
 .hero{display:grid;grid-template-columns:180px 1fr;gap:24px;margin-top:18px}
 .portrait{position:relative}
@@ -21,13 +24,7 @@
 .title{color:var(--sub);font-weight:500}
 .tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px}
 .tag{padding:6px 12px;border-radius:999px;background:linear-gradient(180deg,#F6FBFE,#E8F6FB);border:1px solid var(--line);font-size:12px;color:#0f2a41}
-.logo {
-  width: 44px;
-  height: 44px;
-  border-radius: 50%;
-  background: url('./assets/logo.gra2.png') center/cover no-repeat;
-  box-shadow: var(--shadow);
-}
+
 
 /* —— CTA（LINE + メール/電話スプリット） —— */
 .cta-group{display:flex;flex-direction:column;gap:10px;margin-top:10px}
@@ -73,6 +70,13 @@ footer{margin-top:30px;color:var(--sub);font-size:12px;display:flex;justify-cont
 .grid{grid-template-columns:1fr}
 .links{grid-template-columns:1fr}
 .qr{grid-template-columns:1fr}
+.nav{padding:10px 12px}
+.brand h1{font-size:18px}
+}
+.avatar{width:100%;height:220px}
+.grid{grid-template-columns:1fr}
+.links{grid-template-columns:1fr}
+.qr{grid-template-columns:1fr}
 .nav{padding:12px 16px}
 }
 
@@ -82,30 +86,6 @@ footer{margin-top:30px;color:var(--sub);font-size:12px;display:flex;justify-cont
 .cta-split{display:flex;flex-direction:row;gap:10px}
 .btn.line{font-size:16px}
 .cta-split .btn{font-size:15px}
-}
-    :root{
-  --header-h: 64px; /* ヘッダー高さ（必要なら調整） */
-}
-
-/* 固定ヘッダー化 */
-.nav-wrap{
-  position: fixed;        /* ← sticky から fixed に */
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  padding-top: env(safe-area-inset-top, 0px); /* iPhoneノッチ安全域 */
-  backdrop-filter: saturate(120%) blur(10px);
-  background: linear-gradient(180deg, rgba(118,173,209,.92), rgba(118,173,209,.86));
-  border-bottom: 1px solid rgba(255,255,255,.35);
-}
-
-/* 本文がヘッダーの下に隠れないように上マージンを確保 */
-body{
-  padding-top: calc(var(--header-h) + env(safe-area-inset-top, 0px));
-}
-
-/* 中の高さ合わせ（任意。見た目に合わせて） */
-.nav{
-  min-height: var(--header-h);
 }
 </style>
   
