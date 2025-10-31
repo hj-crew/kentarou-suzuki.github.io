@@ -105,6 +105,17 @@ footer{margin-top:30px;color:var(--sub);font-size:12px;display:flex;justify-cont
 </style>
   
 </head>
+  <script>
+  // 固定ヘッダーの高さに応じて本文余白を同期
+  function syncHeaderSpace(){
+    const wrap = document.querySelector('.nav-wrap');
+    if(!wrap) return;
+    const h = wrap.offsetHeight;      // 実際のヘッダー高さ
+    document.body.style.paddingTop = (h || 0) + 'px';
+  }
+  window.addEventListener('load', syncHeaderSpace);
+  window.addEventListener('resize', syncHeaderSpace);
+</script>
 <body>
  <!-- Top Nav -->
   <div class="nav-wrap"> 
